@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Estacionamento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Cadastro de Veículos</h2>
+        <form action="/cadastrar" method="POST">
+            <input type="text" name="placa" placeholder="Placa (ex: ABC-1234)" required>
+            <input type="text" name="modelo" placeholder="Modelo (ex: Civic)" required>
+            <input type="text" name="cor" placeholder="Cor">
+            <button type="submit">Cadastrar Entrada</button>
+        </form>
+
+        <hr>
+
+        <h3>Veículos no Pátio</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Placa</th>
+                    <th>Modelo</th>
+                    <th>Cor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for v in veiculos %}
+                <tr>
+                    <td>{{ v[1] }}</td>
+                    <td>{{ v[2] }}</td>
+                    <td>{{ v[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
